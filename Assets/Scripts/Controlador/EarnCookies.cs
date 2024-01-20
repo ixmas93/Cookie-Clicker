@@ -8,6 +8,6 @@ namespace Controlador
 
         public EarnCookies(Score score) => _score = score;
 
-        public void CookieClick() => _score.AddCookies(_score.cookiesIncrementValue);
+        public void CookieClick() => _score.AddCookies(_score.cookiesIncrementAmmount);
     }
 }
