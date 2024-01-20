@@ -6,7 +6,6 @@ using Controlador;
 
 public class Counter : MonoBehaviour
 {
-    int cookieCounter;
     TMP_Text counterUI;
     Presenter presenter;
 
