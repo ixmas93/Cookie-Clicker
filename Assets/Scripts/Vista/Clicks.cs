@@ -1,11 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Controlador;
 using UnityEngine;
 
-public class Clicks : MonoBehaviour
+namespace Vista
 {
-    private void OnMouseDown()
+    public class Clicks : MonoBehaviour
     {
-        
+        private EarnCookies _earnCookies;
+
+        private void Start()
+        {
+            _earnCookies = FindObjectOfType<Presenter>().EarnCookies;
+        }
+
+        public void CookieClick()
+        {
+            _earnCookies.CookieClick();
+        }
     }
 }
