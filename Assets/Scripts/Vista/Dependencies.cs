@@ -10,6 +10,7 @@ namespace Vista
         public Score Score { private set; get; }
         
         public EarnCookies EarnCookies { private set; get; }
+        public BuyPowerup BuyPowerup;
         [SerializeField] private bool log;
 
         private void Awake()
@@ -18,6 +19,7 @@ namespace Vista
             CookiesDisplay view = log ? FindAnyObjectByType<Mierda>() : FindAnyObjectByType<Counter>();
             CookiesDisplay allViews = new Cosa(new CookiesDisplay[] { FindAnyObjectByType<Mierda>(), FindAnyObjectByType<Counter>() });
             EarnCookies = new EarnCookies(Score, allViews);
+            BuyPowerup = new BuyPowerup(Score, allViews);
         }
     }
 }

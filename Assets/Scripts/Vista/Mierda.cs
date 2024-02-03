@@ -26,4 +26,5 @@ public class Cosa : CookiesDisplay
             item.DisplayCookies(amount);
         }
     }
+
 }
