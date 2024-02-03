@@ -4,23 +4,21 @@ using UnityEngine;
 using TMPro;
 using Controlador;
 
-public class Counter : MonoBehaviour
+namespace Vista
 {
-    TMP_Text counterUI;
-    Presenter presenter;
-
-    private void Awake()
+    public class Counter : MonoBehaviour, CookiesDisplay
     {
-        counterUI = GetComponent<TMP_Text>();
-    }
+        TMP_Text counterUI;
 
-    private void Start()
-    {
-        presenter = FindObjectOfType<Presenter>();
-    }
+        private void Awake()
+        {
+            counterUI = GetComponent<TMP_Text>();
+        }
 
-    private void Update()
-    {
-        counterUI.SetText(presenter.Score.playerTotalCookies.ToString());
+
+        public void DisplayCookies(int amount)
+        {
+            counterUI.SetText(amount.ToString());
+        }
     }
 }

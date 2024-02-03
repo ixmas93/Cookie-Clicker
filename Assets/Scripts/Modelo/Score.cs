@@ -3,13 +3,14 @@ namespace Modelo
 {
     public class Score
     {
+        
         public int playerTotalCookies { get; private set; }
-        public int cookiesIncrementAmmount { get; private set; } = 1;
+        private int cookiesIncrementAmmount { get; } = 1;
 
 
-        public void AddCookies(int newCookiesAmmount)
+        public void AddCookies()
         {
-            playerTotalCookies += newCookiesAmmount;
+            playerTotalCookies += cookiesIncrementAmmount;
         }
     }
 }

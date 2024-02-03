@@ -5,9 +5,25 @@ namespace Controlador
     public class EarnCookies
     {
         private readonly Score _score;
+        private readonly CookiesDisplay cookieDisplay;
 
-        public EarnCookies(Score score) => _score = score;
+        public EarnCookies(Score score, CookiesDisplay cookieDisplay)
+        {
+            _score = score;
+            this.cookieDisplay = cookieDisplay;
+        }
 
-        public void CookieClick() => _score.AddCookies(_score.cookiesIncrementAmmount);
+        public void CookieClick()
+        {
+            _score.AddCookies();
+            cookieDisplay.DisplayCookies(_score.playerTotalCookies);
+        }
+            
+    }
+
+
+    public interface CookiesDisplay
+    {
+        public void DisplayCookies(int amount);
     }
 }

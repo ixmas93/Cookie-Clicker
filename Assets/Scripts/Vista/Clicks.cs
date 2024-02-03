@@ -9,7 +9,7 @@ namespace Vista
 
         private void Start()
         {
-            _earnCookies = FindObjectOfType<Presenter>().EarnCookies;
+            _earnCookies = FindObjectOfType<Dependencies>().EarnCookies;
         }
 
         public void CookieClick()
