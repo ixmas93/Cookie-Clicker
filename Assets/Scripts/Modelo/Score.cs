@@ -5,7 +5,7 @@ namespace Modelo
     {
         
         public int playerTotalCookies { get; private set; }
-        private int cookiesIncrementAmmount = 1;
+        public int cookiesIncrementAmmount { get; private set; } = 1;
 
 
         public void AddCookies()
