@@ -10,6 +10,8 @@ namespace Vista
         public Score Score { private set; get; }
         
         public EarnCookies EarnCookies { private set; get; }
+        public SaveGame saveGame { get; set; }
+
         public BuyPowerup BuyPowerup;
         [SerializeField] private bool log;
 
@@ -19,8 +21,11 @@ namespace Vista
             CookiesDisplay view = log ? FindAnyObjectByType<Mierda>() : FindAnyObjectByType<Counter>();
             CookiesDisplay allViews = new Cosa(new CookiesDisplay[] { FindAnyObjectByType<Mierda>(), FindAnyObjectByType<Counter>() });
             EarnCookies = new EarnCookies(Score, allViews);
-            INotifyCorrectPurchase correct = FindAnyObjectByType<CorrectParticles>();
+            IPurchaseCorrect correct = FindAnyObjectByType<CorrectParticles>();
             BuyPowerup = new BuyPowerup(Score, allViews, FindAnyObjectByType<WrongSound>(),correct);
+
+            PlayerPrefsRepository repository = new();
+            saveGame = new SaveGame(repository, Score);
         }
     }
 }

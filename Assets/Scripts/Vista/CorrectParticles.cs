@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Controlador;
-public class CorrectParticles : MonoBehaviour, INotifyCorrectPurchase
+public class CorrectParticles : MonoBehaviour, IPurchaseCorrect
 {
     [SerializeField] ParticleSystem particles;
 

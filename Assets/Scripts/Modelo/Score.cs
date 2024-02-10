@@ -5,8 +5,13 @@ namespace Modelo
     {
         
         public int playerTotalCookies { get; private set; }
-        private int cookiesIncrementAmmount = 1;
+        public int cookiesIncrementAmmount { get; private set; } = 1;
 
+        public Score(int playerTotalCookies, int cookiesIncrementAmmount)
+        {
+            this.playerTotalCookies = playerTotalCookies;
+            this.cookiesIncrementAmmount = cookiesIncrementAmmount;
+        }
 
         public void AddCookies()
         {
@@ -24,6 +29,12 @@ namespace Modelo
         }
 
         public bool HasEnoughCookies(int price) => playerTotalCookies >= price;
+
+        public void SetFromOtherScore(Score score)
+        {
+            playerTotalCookies = score.playerTotalCookies;
+            cookiesIncrementAmmount = score.cookiesIncrementAmmount;
+        }
 
     }
 }

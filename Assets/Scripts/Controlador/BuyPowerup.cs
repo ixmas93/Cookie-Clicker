@@ -11,9 +11,9 @@ namespace Controlador
         const int POWERUP_PRICE = 20;
 
         private readonly IWrongPurchaseNotification _wrongPurchaseNotification;
-        private readonly INotifyCorrectPurchase _purchaseCorrect;
+        private readonly IPurchaseCorrect _purchaseCorrect;
 
-        public BuyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification, INotifyCorrectPurchase purchaseCorrect)
+        public BuyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification, IPurchaseCorrect purchaseCorrect)
         {
             this.score = score;
             this.cookieDisplay = cookieDisplay;
@@ -46,7 +46,7 @@ namespace Controlador
         void OnWrongPurchase();
     }
 
-    public interface INotifyCorrectPurchase {
+    public interface IPurchaseCorrect {
         void CorrectPurchase();
     }
 }
