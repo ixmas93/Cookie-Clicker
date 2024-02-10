@@ -19,7 +19,7 @@ namespace Vista
             CookiesDisplay view = log ? FindAnyObjectByType<Mierda>() : FindAnyObjectByType<Counter>();
             CookiesDisplay allViews = new Cosa(new CookiesDisplay[] { FindAnyObjectByType<Mierda>(), FindAnyObjectByType<Counter>() });
             EarnCookies = new EarnCookies(Score, allViews);
-            BuyPowerup = new BuyPowerup(Score, allViews);
+            BuyPowerup = new BuyPowerup(Score, allViews, FindAnyObjectByType<WrongSound>());
         }
     }
 }
