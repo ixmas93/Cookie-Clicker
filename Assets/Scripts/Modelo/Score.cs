@@ -1,12 +1,13 @@
 
 namespace Modelo
 {
-    public class Score
-    {
-        
-        public int playerTotalCookies { get; private set; }
-        public int cookiesIncrementAmmount { get; private set; } = 1;
+    public class Score {
 
+        public int playerTotalCookies { get; private set; }
+        public int cookiesIncrementAmmount { get; private set; }
+
+        public Score() : this(0, 1){}
+        
         public Score(int playerTotalCookies, int cookiesIncrementAmmount)
         {
             this.playerTotalCookies = playerTotalCookies;
