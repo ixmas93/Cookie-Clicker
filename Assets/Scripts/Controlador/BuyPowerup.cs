@@ -11,12 +11,14 @@ namespace Controlador
         const int POWERUP_PRICE = 20;
 
         private readonly IWrongPurchaseNotification _wrongPurchaseNotification;
+        private readonly INotifyCorrectPurchase _purchaseCorrect;
 
-        public BuyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification)
+        public BuyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification, INotifyCorrectPurchase purchaseCorrect)
         {
             this.score = score;
             this.cookieDisplay = cookieDisplay;
             _wrongPurchaseNotification = wrongPurchaseNotification;
+            _purchaseCorrect = purchaseCorrect;
         }        
 
         public void Execute() {
@@ -35,11 +37,16 @@ namespace Controlador
             score.DoubleCookiesIncrement();
             score.SubstractCookies(POWERUP_PRICE);
             cookieDisplay.DisplayCookies(score.playerTotalCookies);
+            _purchaseCorrect.CorrectPurchase();
         }
 
     }
 
     public interface IWrongPurchaseNotification {
         void OnWrongPurchase();
+    }
+
+    public interface INotifyCorrectPurchase {
+        void CorrectPurchase();
     }
 }
