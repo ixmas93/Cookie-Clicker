@@ -1,4 +1,5 @@
 using Modelo;
+using System.Threading.Tasks;
 
 namespace Controlador
 {
@@ -6,6 +7,7 @@ namespace Controlador
     {
         private readonly Score _score;
         private readonly CookiesDisplay cookieDisplay;
+        private bool automaticAddEnabled;
 
         public EarnCookies(Score score, CookiesDisplay cookieDisplay)
         {
@@ -17,6 +19,21 @@ namespace Controlador
         {
             _score.AddCookies();
             cookieDisplay.DisplayCookies(_score.playerTotalCookies);
+        }
+
+        public async void AutomaticAdd()
+        {
+            if (automaticAddEnabled)
+                return;
+            
+            automaticAddEnabled = true;
+
+            while (true)
+            {
+                await Task.Delay((int)(_score.timeBetweenAdditions * 1000));
+                _score.AddTimedCookies();
+                cookieDisplay.DisplayCookies(_score.playerTotalCookies);
+            }
         }
             
     }

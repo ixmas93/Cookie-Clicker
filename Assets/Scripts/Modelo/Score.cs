@@ -4,19 +4,27 @@ namespace Modelo
     public class Score {
 
         public int playerTotalCookies { get; private set; }
-        public int cookiesIncrementAmmount { get; private set; }
+        public int clickedCookiesIncrementAmmount { get; private set; }
+        public int timedCookiesIncrementAmount { get; private set; }
+        public float timeBetweenAdditions { get; private set; }
+
 
         public Score() : this(0, 1){}
         
         public Score(int playerTotalCookies, int cookiesIncrementAmmount)
         {
             this.playerTotalCookies = playerTotalCookies;
-            this.cookiesIncrementAmmount = cookiesIncrementAmmount;
+            this.clickedCookiesIncrementAmmount = cookiesIncrementAmmount;
         }
 
         public void AddCookies()
         {
-            playerTotalCookies += cookiesIncrementAmmount;
+            playerTotalCookies += clickedCookiesIncrementAmmount;
+        }
+
+        public void AddTimedCookies()
+        {
+            playerTotalCookies += timedCookiesIncrementAmount;
         }
 
         public void SubstractCookies(int amount)
@@ -26,7 +34,7 @@ namespace Modelo
 
         public void DoubleCookiesIncrement()
         {
-            cookiesIncrementAmmount *= 2;
+            clickedCookiesIncrementAmmount *= 2;
         }
 
         public bool HasEnoughCookies(int price) => playerTotalCookies >= price;
@@ -34,7 +42,7 @@ namespace Modelo
         public void SetFromOtherScore(Score score)
         {
             playerTotalCookies = score.playerTotalCookies;
-            cookiesIncrementAmmount = score.cookiesIncrementAmmount;
+            clickedCookiesIncrementAmmount = score.clickedCookiesIncrementAmmount;
         }
 
     }
