@@ -15,6 +15,7 @@ namespace Modelo
         {
             this.playerTotalCookies = playerTotalCookies;
             this.clickedCookiesIncrementAmmount = cookiesIncrementAmmount;
+            timeBetweenAdditions = 1;
         }
 
         public void AddCookies()
@@ -35,6 +36,10 @@ namespace Modelo
         public void DoubleCookiesIncrement()
         {
             clickedCookiesIncrementAmmount *= 2;
+        }
+
+        public void IncrementTimedCookiesAmount() {
+            timedCookiesIncrementAmount++;
         }
 
         public bool HasEnoughCookies(int price) => playerTotalCookies >= price;

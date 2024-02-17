@@ -14,6 +14,7 @@ namespace Vista
         public LoadGame loadGame { get; set; }
 
         public BuyPowerup BuyPowerup;
+        public BuyGrannyPowerup BuyGrannyPowerup;
         [SerializeField] private bool log;
 
         private void Awake()
@@ -24,7 +25,10 @@ namespace Vista
             EarnCookies = new EarnCookies(Score, allViews);
             
             IPurchaseCorrect correct = FindAnyObjectByType<CorrectParticles>();
-            BuyPowerup = new BuyPowerup(Score, allViews, FindAnyObjectByType<WrongSound>(),correct);
+            IWrongPurchaseNotification wrong = FindAnyObjectByType<WrongSound>();
+            
+            BuyPowerup = new BuyPowerup(Score, allViews, wrong, correct);
+            BuyGrannyPowerup = new BuyGrannyPowerup(Score, allViews, wrong, correct, EarnCookies);
 
             PlayerPrefsRepository repository = new();
             saveGame = new SaveGame(repository, Score);

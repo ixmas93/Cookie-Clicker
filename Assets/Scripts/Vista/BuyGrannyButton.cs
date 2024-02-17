@@ -6,19 +6,19 @@ namespace Vista
 {
     public class BuyGrannyButton : MonoBehaviour
     {
-        private BuyPowerup buyPowerup;
+        private BuyGrannyPowerup buyGrannyPowerup;
 
 
         private void Start()
         {
-            buyPowerup = FindObjectOfType<Dependencies>().BuyPowerup;
+            buyGrannyPowerup = FindObjectOfType<Dependencies>().BuyGrannyPowerup;
             GetComponent<Button>().onClick.AddListener(Buy);
         }
 
 
         private void Buy()
         {
-            buyPowerup.Execute();
+            buyGrannyPowerup.Execute();
         }
 
     }

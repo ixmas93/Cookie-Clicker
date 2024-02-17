@@ -8,17 +8,19 @@ namespace Controlador
     {
         private Score score;
         private CookiesDisplay cookieDisplay;
+        private readonly EarnCookies _earnCookies;
         const int POWERUP_PRICE = 20;
 
         private readonly IWrongPurchaseNotification _wrongPurchaseNotification;
         private readonly IPurchaseCorrect _purchaseCorrect;
 
-        public BuyGrannyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification, IPurchaseCorrect purchaseCorrect)
+        public BuyGrannyPowerup(Score score, CookiesDisplay cookieDisplay, IWrongPurchaseNotification wrongPurchaseNotification, IPurchaseCorrect purchaseCorrect, EarnCookies earnCookies)
         {
             this.score = score;
             this.cookieDisplay = cookieDisplay;
             _wrongPurchaseNotification = wrongPurchaseNotification;
             _purchaseCorrect = purchaseCorrect;
+            _earnCookies = earnCookies;
         }
 
         public void Execute()
@@ -36,7 +38,8 @@ namespace Controlador
 
         private void Buy()
         {
-            score.DoubleCookiesIncrement();
+            score.IncrementTimedCookiesAmount();
+            _earnCookies.AutomaticAdd();
             score.SubstractCookies(POWERUP_PRICE);
             cookieDisplay.DisplayCookies(score.playerTotalCookies);
             _purchaseCorrect.CorrectPurchase();
