@@ -13,5 +13,8 @@ namespace Vista {
 		private void LoadGame() => FindObjectOfType<Dependencies>().loadGame.Run();
 
 		private void SaveGame() => FindObjectOfType<Dependencies>().saveGame.Run();
-	}
+
+		private void OnApplicationQuit() => SaveGame();
+
+    }
 }

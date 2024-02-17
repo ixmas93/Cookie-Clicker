@@ -9,12 +9,13 @@ namespace Modelo
         public float timeBetweenAdditions { get; private set; }
 
 
-        public Score() : this(0, 1){}
+        public Score() : this(0, 1, 0){}
         
-        public Score(int playerTotalCookies, int cookiesIncrementAmmount)
+        public Score(int playerTotalCookies, int cookiesIncrementAmmount, int timedCookiesIncrementAmount)
         {
             this.playerTotalCookies = playerTotalCookies;
             this.clickedCookiesIncrementAmmount = cookiesIncrementAmmount;
+            this.timedCookiesIncrementAmount = timedCookiesIncrementAmount;
             timeBetweenAdditions = 1;
         }
 
@@ -48,6 +49,7 @@ namespace Modelo
         {
             playerTotalCookies = score.playerTotalCookies;
             clickedCookiesIncrementAmmount = score.clickedCookiesIncrementAmmount;
+            timedCookiesIncrementAmount = score.timedCookiesIncrementAmount;
         }
 
     }

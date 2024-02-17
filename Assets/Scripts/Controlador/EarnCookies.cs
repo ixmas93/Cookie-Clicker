@@ -28,13 +28,16 @@ namespace Controlador
             
             automaticAddEnabled = true;
 
-            while (true)
+            while (automaticAddEnabled)
             {
                 await Task.Delay((int)(_score.timeBetweenAdditions * 1000));
                 _score.AddTimedCookies();
                 cookieDisplay.DisplayCookies(_score.playerTotalCookies);
             }
         }
+
+        public void DisableAutomaticAdd() => automaticAddEnabled = false;
+ 
             
     }
 

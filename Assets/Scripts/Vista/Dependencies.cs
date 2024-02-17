@@ -32,7 +32,13 @@ namespace Vista
 
             PlayerPrefsRepository repository = new();
             saveGame = new SaveGame(repository, Score);
-            loadGame = new LoadGame(repository, Score, allViews);
+            loadGame = new LoadGame(repository, Score, allViews, EarnCookies);
         }
+
+        private void OnApplicationQuit()
+        {
+            EarnCookies.DisableAutomaticAdd();
+        }
+
     }
 }
