@@ -33,6 +33,10 @@ namespace Modelo
 
         public void SubstractCookies(int amount)
         {
+            if(amount > playerTotalCookies)
+            {
+                throw new Exception("No me pueden quitar mas galletas de las que tengo");
+            }
             playerTotalCookies -= amount;
         }
 

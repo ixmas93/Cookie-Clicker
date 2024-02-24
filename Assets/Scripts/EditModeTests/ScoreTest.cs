@@ -29,4 +29,34 @@ public class ScoreTest
         Score.AddCookiesSinceDate(DateTime.Now,DateTime.Now.AddSeconds(300));
         Assert.AreEqual(0,Score.playerTotalCookies);
     }
+    [Test]
+    public void asdoasjodso()
+    {
+        var Score = new Score();
+        Score.AddCookiesSinceDate(DateTime.Now,DateTime.Now);
+        Assert.AreEqual(0, Score.playerTotalCookies);
+    }
+    [Test]
+    public void asdasdasdvcx()
+    {
+        var Score = new Score();
+        Score.AddTimedCookies();
+        Assert.AreEqual(0, Score.playerTotalCookies);
+    }
+    [Test]
+    public void sdfdsdfsdfds()
+    {
+        var Score = new Score(playerTotalCookies:0,cookiesIncrementAmmount:1,timedCookiesIncrementAmount:1);
+        Score.AddCookiesSinceDate(DateTime.Now,DateTime.Now.AddSeconds(1));
+        Assert.AreEqual(1,Score.playerTotalCookies);
+    }
+    [Test]
+    public void CantBuyWithNoCookies()
+    {
+        var Score = new Score();
+        Assert.IsFalse(Score.HasEnoughCookies(999));
+        Assert.IsTrue(Score.HasEnoughCookies(0));
+        Score.AddCookies();
+        Assert.IsTrue(Score.HasEnoughCookies(1));
+    }
 }
