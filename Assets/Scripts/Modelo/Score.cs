@@ -57,7 +57,7 @@ namespace Modelo
         {
             TimeSpan timeDifference=currentDate - lastDate;
             float incrementsPending=(float)timeDifference.TotalSeconds/timeBetweenAdditions;
-            playerTotalCookies = (int)incrementsPending * timedCookiesIncrementAmount;
+            playerTotalCookies += (int)incrementsPending * timedCookiesIncrementAmount;
         }
     }
 }

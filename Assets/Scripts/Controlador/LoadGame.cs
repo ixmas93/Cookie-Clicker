@@ -1,4 +1,5 @@
 using Modelo;
+using System;
 
 namespace Controlador
 {
@@ -20,10 +21,10 @@ namespace Controlador
 
         public void Run()
         {
-            gameRepository.LoadLastDate();
+            DateTime lastDate = gameRepository.LoadLastDate();
             Score newScore = gameRepository.LoadScore();
             _score.SetFromOtherScore(newScore);
-
+            _score.AddCookiesSinceDate(lastDate, DateTime.Now);
             EnableTimedCookiesIfNeeded();
             _display.DisplayCookies(_score.playerTotalCookies);
         }
