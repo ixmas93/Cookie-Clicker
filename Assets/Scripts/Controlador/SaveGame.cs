@@ -1,4 +1,5 @@
 using Modelo;
+using System;
 
 namespace Controlador {
 	public class SaveGame {
@@ -20,5 +21,6 @@ namespace Controlador {
 		void SaveScore(Score score);
 		void SaveLastDate();
         Score LoadScore();
+		DateTime LoadLastDate();
     }
 }

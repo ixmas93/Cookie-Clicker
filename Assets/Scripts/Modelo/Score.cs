@@ -1,4 +1,6 @@
 
+using System;
+
 namespace Modelo
 {
     public class Score {
@@ -51,6 +53,11 @@ namespace Modelo
             clickedCookiesIncrementAmmount = score.clickedCookiesIncrementAmmount;
             timedCookiesIncrementAmount = score.timedCookiesIncrementAmount;
         }
-
+        public void AddCookiesSinceDate(DateTime lastDate,DateTime currentDate)
+        {
+            TimeSpan timeDifference=currentDate - lastDate;
+            float incrementsPending=(float)timeDifference.TotalSeconds/timeBetweenAdditions;
+            playerTotalCookies = (int)incrementsPending * timedCookiesIncrementAmount;
+        }
     }
 }

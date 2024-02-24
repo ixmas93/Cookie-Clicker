@@ -20,7 +20,9 @@ namespace Vista {
 		}
 
 		public DateTime LoadLastDate() {
-			return new DateTime();
+			string date=PlayerPrefs.GetString("LastDate",DateTime.Now.ToString());
+            return DateTime.Parse(date);
+			
 		}
         
 		public void SaveLastDate() {
