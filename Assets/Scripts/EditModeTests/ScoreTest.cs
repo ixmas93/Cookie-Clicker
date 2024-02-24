@@ -22,5 +22,11 @@ public class ScoreTest
         Score.AddCookies();
         Assert.AreEqual(1, Score.playerTotalCookies);
     }
-    
+    [Test]
+    public void NoGrannyNoCookie()
+    {
+        var Score = new Score();
+        Score.AddCookiesSinceDate(DateTime.Now,DateTime.Now.AddSeconds(300));
+        Assert.AreEqual(0,Score.playerTotalCookies);
+    }
 }
