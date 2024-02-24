@@ -7,7 +7,6 @@ namespace Controlador
     {
         private readonly Score _score;
         private readonly CookiesDisplay cookieDisplay;
-        private bool automaticAddEnabled;
 
         public EarnCookies(Score score, CookiesDisplay cookieDisplay)
         {
@@ -21,24 +20,37 @@ namespace Controlador
             cookieDisplay.DisplayCookies(_score.playerTotalCookies);
         }
 
+    }
+
+    public class EarnCookiesOvertime
+    {
+        private Score score;
+        private CookiesDisplay cookiesDisplay;
+        private bool automaticAddEnabled;
+
+        public EarnCookiesOvertime(Score score, CookiesDisplay cookiesDisplay)
+        {
+            this.score = score;
+            this.cookiesDisplay = cookiesDisplay;
+        }
+
+
         public async void AutomaticAdd()
         {
             if (automaticAddEnabled)
                 return;
-            
+
             automaticAddEnabled = true;
 
             while (automaticAddEnabled)
             {
-                await Task.Delay((int)(_score.timeBetweenAdditions * 1000));
-                _score.AddTimedCookies();
-                cookieDisplay.DisplayCookies(_score.playerTotalCookies);
+                await Task.Delay((int)(score.timeBetweenAdditions * 1000));
+                score.AddTimedCookies();
+                cookiesDisplay.DisplayCookies(score.playerTotalCookies);
             }
         }
 
         public void DisableAutomaticAdd() => automaticAddEnabled = false;
- 
-            
     }
 
 

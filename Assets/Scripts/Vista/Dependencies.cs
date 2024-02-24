@@ -10,6 +10,7 @@ namespace Vista
         public Score Score { private set; get; }
         
         public EarnCookies EarnCookies { private set; get; }
+        public EarnCookiesOvertime EarnCookiesOvertime { private set; get; }
         public SaveGame saveGame { get; set; }
         public LoadGame loadGame { get; set; }
 
@@ -23,21 +24,22 @@ namespace Vista
             CookiesDisplay view = log ? FindAnyObjectByType<Mierda>() : FindAnyObjectByType<Counter>();
             CookiesDisplay allViews = new Cosa(new CookiesDisplay[] { FindAnyObjectByType<Mierda>(), FindAnyObjectByType<Counter>() });
             EarnCookies = new EarnCookies(Score, allViews);
+            EarnCookiesOvertime = new EarnCookiesOvertime(Score, allViews);
             
             IPurchaseCorrect correct = FindAnyObjectByType<CorrectParticles>();
             IWrongPurchaseNotification wrong = FindAnyObjectByType<WrongSound>();
             
             BuyPowerup = new BuyPowerup(Score, allViews, wrong, correct);
-            BuyGrannyPowerup = new BuyGrannyPowerup(Score, allViews, wrong, correct, EarnCookies);
+            BuyGrannyPowerup = new BuyGrannyPowerup(Score, allViews, wrong, correct, EarnCookiesOvertime);
 
             PlayerPrefsRepository repository = new();
             saveGame = new SaveGame(repository, Score);
-            loadGame = new LoadGame(repository, Score, allViews, EarnCookies);
+            loadGame = new LoadGame(repository, Score, allViews, EarnCookiesOvertime);
         }
 
         private void OnApplicationQuit()
         {
-            EarnCookies.DisableAutomaticAdd();
+            EarnCookiesOvertime.DisableAutomaticAdd();
         }
 
     }

@@ -6,15 +6,15 @@ namespace Controlador
     {
         private GameRepository gameRepository;
         private readonly Score _score;
-        private readonly EarnCookies earnCookies;
+        private readonly EarnCookiesOvertime earnCookiesOvertime;
 
         private readonly CookiesDisplay _display;
 
-        public LoadGame(GameRepository gameRepository, Score score, CookiesDisplay display, EarnCookies earnCookies)
+        public LoadGame(GameRepository gameRepository, Score score, CookiesDisplay display, EarnCookiesOvertime earnCookies)
         {
             this.gameRepository = gameRepository;
             this._score = score;
-            this.earnCookies = earnCookies;
+            this.earnCookiesOvertime = earnCookies;
             _display = display;
         }
 
@@ -29,7 +29,7 @@ namespace Controlador
         private void EnableTimedCookiesIfNeeded()
         {
             if (_score.timedCookiesIncrementAmount > 0)
-                earnCookies.AutomaticAdd();
+                earnCookiesOvertime.AutomaticAdd();
         }
 
     }
