@@ -15,6 +15,12 @@ public class ScoreTest
         Assert.AreEqual(0,new Score().playerTotalCookies);
         // Use the Assert class to test conditions
     }
-
+    [Test]
+    public void AddCookies()
+    {
+        var Score = new Score();
+        Score.AddCookies();
+        Assert.AreEqual(1, Score.playerTotalCookies);
+    }
     
 }
