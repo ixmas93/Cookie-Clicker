@@ -11,12 +11,14 @@ namespace Controlador {
 		}
 
 		public void Run() {
-			_repositry.Save(_score);
+			_repositry.SaveScore(_score);
+			_repositry.SaveLastDate();
 		}
 	}
 
 	public interface GameRepository {
-		void Save(Score score);
-        Score LoadGame();
+		void SaveScore(Score score);
+		void SaveLastDate();
+        Score LoadScore();
     }
 }

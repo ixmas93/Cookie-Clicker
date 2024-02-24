@@ -20,7 +20,7 @@ namespace Controlador
 
         public void Run()
         {
-            Score newScore = gameRepository.LoadGame();
+            Score newScore = gameRepository.LoadScore();
             _score.SetFromOtherScore(newScore);
             EnableTimedCookiesIfNeeded();
             _display.DisplayCookies(_score.playerTotalCookies);
